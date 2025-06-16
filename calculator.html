@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Calculator</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: url('https://www.pixelstalk.net/wp-content/uploads/2016/05/Math-Mathematics-Formula-Wallpaper-for-PC.jpg') no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .calculator {
+      background-color: rgba(255, 255, 255, 0.95);
+      border-radius: 12px;
+      padding: 20px;
+      width: 320px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.3);
+      text-align: center;
+      position: relative;
+    }
+
+    .calculator img {
+      width: 90%;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 15px;
+      font-size: 24px;
+      text-align: right;
+      margin-bottom: 10px;
+      border: none;
+      background-color: #f0f0f0;
+      border-radius: 5px;
+    }
+
+    .buttons button {
+      width: 23%;
+      padding: 15px;
+      font-size: 18px;
+      margin: 1%;
+      border: none;
+      border-radius: 5px;
+      background-color: #4facfe;
+      color: white;
+      cursor: pointer;
+    }
+
+    .buttons button.operator {
+      background-color: #00c6ff;
+    }
+
+    .buttons button.equal {
+      background-color: #00b894;
+    }
+
+    .buttons button.clear {
+      background-color: #d63031;
+    }
+  </style>
+</head>
+<body>
+
+<div class="calculator">
+  <!-- Image inside calculator panel -->
+  <img src="https://cdn.pixabay.com/photo/2013/02/11/08/25/mathematics-80449_1280.jpg" alt="Math Visual">
+
+  <!-- Calculator display -->
+  <input type="text" id="result" readonly>
+
+  <!-- Buttons -->
+  <div class="buttons">
+    <button onclick="clearResult()" class="clear">C</button>
+    <button onclick="appendValue('7')">7</button>
+    <button onclick="appendValue('8')">8</button>
+    <button onclick="appendValue('9')">9</button>
+
+    <button onclick="appendValue('4')">4</button>
+    <button onclick="appendValue('5')">5</button>
+    <button onclick="appendValue('6')">6</button>
+    <button onclick="appendValue('/') " class="operator">÷</button>
+
+    <button onclick="appendValue('1')">1</button>
+    <button onclick="appendValue('2')">2</button>
+    <button onclick="appendValue('3')">3</button>
+    <button onclick="appendValue('*')" class="operator">×</button>
+
+    <button onclick="appendValue('0')">0</button>
+    <button onclick="appendValue('.')">.</button>
+    <button onclick="calculate()" class="equal">=</button>
+    <button onclick="appendValue('+')" class="operator">+</button>
+
+    <button onclick="appendValue('-')" class="operator">−</button>
+  </div>
+</div>
+
+<script>
+  function appendValue(val) {
+    document.getElementById("result").value += val;
+  }
+
+  function clearResult() {
+    document.getElementById("result").value = "";
+  }
+
+  function calculate() {
+    try {
+      document.getElementById("result").value = eval(document.getElementById("result").value);
+    } catch (e) {
+      document.getElementById("result").value = "Error";
+    }
+  }
+</script>
+
+</body>
+</html>
